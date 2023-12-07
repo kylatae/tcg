@@ -16,6 +16,10 @@ const trapSchema = new Schema({
       type: String,
       required: true,
     },
+    mana: {
+      type: Number,
+      required: true,
+    },
     //Ability ID Links Ability to a Function
     abilityId: {
       type: String,
@@ -26,7 +30,6 @@ const trapSchema = new Schema({
       type: String,
       required: true,
     }
-  
 });
 
 const Trap = model('Trap', trapSchema);

@@ -20,7 +20,7 @@ const userSchema = new Schema({
     required: true
   },
   //Schema representing available inventory to the player.
-  inventory: [inventoryDeckSchema],
+  inventory: [inventorySchema],
   //Schema representing a saved deck.
   savedDeck: [savedDeckSchema],
 
