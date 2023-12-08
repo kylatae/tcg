@@ -46,8 +46,14 @@ export default function Auth({usage="signup"}){
         <div>
           <h2>{ usage === "signup" ? "Signup" : "Login" }</h2>
           <div>
+            
             <div>
-              <label className="d-block">Email Address</label>
+              <label className="d-block">Username (Display name)</label>
+              <input type="text" name="username" value={userData.username} onChange={handleInputChange} />
+            </div>
+
+            <div>
+              <label className="d-block">Email Address (Login Name)</label>
               <input type="text" name="email" value={userData.email} onChange={handleInputChange} />
             </div>
 
@@ -55,6 +61,8 @@ export default function Auth({usage="signup"}){
               <label className="d-block">Password</label>
               <input type="password" name="password" value={userData.password} onChange={handleInputChange} />
             </div>
+
+
           </div>
 
           <button className="mt-2">Submit Info</button>
