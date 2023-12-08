@@ -32,5 +32,4 @@ const savedDeckSchema = new Schema({
   }
 );
 
-const SavedDeck = model('SavedDeck', savedDeckSchema);
-module.exports = SavedDeck;
+module.exports = savedDeckSchema;

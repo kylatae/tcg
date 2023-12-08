@@ -19,4 +19,4 @@ const cardSchema = new Schema({
 });
 
 
-module.exports = Card;
+module.exports = cardSchema;
