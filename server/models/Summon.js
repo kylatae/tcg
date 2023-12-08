@@ -12,7 +12,7 @@ const summonSchema = new Schema({
     required: true,
   },
   //Race of Summon
-  race: {
+  tribe: {
     type: String,
     required: true,
   },
