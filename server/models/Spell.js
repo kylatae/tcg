@@ -12,7 +12,7 @@ const trapSchema = new Schema({
       required: true,
     },
     //Required Summoner Race
-    race: {
+    tribe: {
       type: String,
       required: true,
     },
