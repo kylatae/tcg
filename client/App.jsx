@@ -3,6 +3,11 @@ import AppProvider from './utils/AppProvider';
 import { Header, ProtectedRoute } from './components';
 import { HomePage, AuthPage, Logout, PrivatePage } from './pages/'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from './src/navigation/navbar';
+
+
+
+<navbar className="js"></navbar>;
 
 export default function App(){
 
@@ -23,6 +28,7 @@ export default function App(){
 
             <Route path="/logout" element={<Logout />} />
           </Routes>
+          <Navbar />
         </div>
       </BrowserRouter>
     </AppProvider>
