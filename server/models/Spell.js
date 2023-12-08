@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const trapSchema = new Schema({
+const spellSchema = new Schema({
     //Global Card ID Number
     cardId: {
       type: String,
@@ -32,5 +32,5 @@ const trapSchema = new Schema({
     }
 });
 
-const Trap = model('Trap', trapSchema);
-module.exports = Trap;
+const Spell = model('Spell', spellSchema);
+module.exports = Spell;

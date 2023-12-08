@@ -1,8 +1,9 @@
 const { Schema, Types } = require('mongoose');
+const cardSchema = require('./Card');
 
 const inventorySchema = new Schema({
   //Direct relationship to User.js
-  savedDeckId: {
+  inventoryId: {
   type: Schema.Types.ObjectId,
   default: () => new Types.ObjectId(),
   },
@@ -24,4 +25,4 @@ const inventorySchema = new Schema({
   }
 );
 
-module.exports = Inventory;
+module.exports = inventorySchema;
