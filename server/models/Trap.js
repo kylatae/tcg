@@ -17,12 +17,12 @@ const trapSchema = new Schema({
       required: true,
     },
     //Ability ID Links Ability to a Function
-    abilityId: {
+    effectId: {
       type: String,
       required: true,
     },
     //Description of Ability
-    ability: {
+    effect: {
       type: String,
       required: true,
     }

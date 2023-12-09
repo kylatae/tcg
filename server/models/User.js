@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require("bcrypt")
 const savedDeckSchema = require('./SavedDeck');
-const inventorySchema = require('./Inventory');
+const cardSchema = require('./Card');
 
 const userSchema = new Schema({
   //Used for login purposes, Hidden to public
@@ -20,8 +20,11 @@ const userSchema = new Schema({
     required: true
   },
   //Schema representing available inventory to the player.
-  inventory: [inventorySchema],
-  //Schema representing a saved deck.
+  inventory: {
+      currency: {
+        type: String,
+      },
+      cards: [cardSchema], },
   savedDeck: [savedDeckSchema],
 
 },

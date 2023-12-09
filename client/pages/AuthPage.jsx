@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
-import Auth from "../components/Auth"
+import AuthSignup from "../components/AuthSignup"
+import AuthLogin from "../components/AuthLogin"
+
 
 export default function AuthPage(){
 
@@ -7,11 +9,11 @@ export default function AuthPage(){
   return (
     <div className="d-flex gap-5">
       <div>
-        <Auth usage="signup" />
+        <AuthSignup usage="signup" />
       </div>
 
       <div>
-        <Auth usage="login" />
+        <AuthLogin usage="login" />
       </div>
     </div>
   )
