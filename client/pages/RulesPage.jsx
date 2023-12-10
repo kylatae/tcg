@@ -1,13 +1,19 @@
+
+
 export default function RulesPage() {
 
     return (
         <>
             <h1>Game Rules & FAQ</h1>
+    
+            <img src="img/treePic.jpg" alt="tree with sun" width="90%" height="80%" />
 
             <div>
                 <h2>Game Rules:</h2>
 
-                <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit? </div>
+                <div>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam corrupti eveniet facere deleniti ducimus aperiam tenetur optio similique fuga hic velit doloribus eaque nostrum itaque, beatae harum error alias sit?
+                </div>
             </div>
 
             <h2> FAQ: </h2>
@@ -27,6 +33,7 @@ export default function RulesPage() {
                     <i> decended from wolves </i>
                 </li>
             </ul>
+
         </>
     )
 }
