@@ -6,7 +6,7 @@ export default function Auth({usage="signup"}){
 
   const appCtx = useAppCtx()
 
-  const [ userData, setUserData ] = useState({ email: "", password: "" })
+  const [ userData, setUserData ] = useState({ username: "", email: "", password: "", tribe: "ElfStarter"})
 
   function handleInputChange(e){
     setUserData({...userData, [e.target.name]: e.target.value })
@@ -62,8 +62,17 @@ export default function Auth({usage="signup"}){
               <input type="password" name="password" value={userData.password} onChange={handleInputChange} />
             </div>
 
-
+            <div>
+              <label className ="d-block">Select Starting Tribe</label>
+                <select onChange={handleInputChange} className="d-block" name="tribe">
+                  <option value="ElfStarter">Elf</option>
+                  <option value="HumanStarter">Human</option>
+                  <option value="DwarfStarter">Dwarf</option>
+                  <option value="MonsterStarter">Monster</option>
+                </select>
           </div>
+
+        </div>
 
           <button className="mt-2">Submit Info</button>
         </div>

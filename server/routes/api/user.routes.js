@@ -12,6 +12,10 @@ const {
   authenticate, 
   verifyUser 
 } = require('../../controllers/user.controller');
+const {
+  getBoosterByName,
+  addStarterDeck
+} = require('../../controllers/booster.controller');
 
 
 /*
@@ -66,8 +70,15 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const user = await createUser(req.body)
+    //Creates base shell of user
+    const user = await createUser({username: req.body.username, email: req.body.email, password: req.body.password, inventory: {currency: 50}})
+    //Checks which starterdeck the user requested
+    const starterDeck = await getBoosterByName(req.body.tribe)
+    //Adds cards to inventory.cards for a starter deck
+    const addedStarterDeck = await addStarterDeck(starterDeck, user)
+    //Creates a session token for user
     const token = createToken(user.email, user._id)
+    //Hides password
     const payload = stripPassword(user)
     res.cookie("auth-cookie", token).json({ result: "success", payload })
   } catch(err){

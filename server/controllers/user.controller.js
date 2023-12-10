@@ -63,7 +63,10 @@ async function getItemById(id) {
 // use this as our signup handler
 async function createItem(data) {
   try {
-    return await Model.create(data);
+    const newUser = await Model.create(data);
+
+
+    return newUser
   } catch (err) {
     throw new Error(err)
   }
@@ -88,6 +91,7 @@ async function deleteItemById(id) {
     throw new Error(err)
   }
 }
+
 
 module.exports = {
   getAllUsers: getAllItems,
