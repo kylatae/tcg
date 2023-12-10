@@ -34,12 +34,10 @@ const summonSchema = new Schema({
   //Ability ID Links Ability to a Function
   abilityId: {
     type: String,
-    required: true,
   },
   //Description of Ability
   ability: {
     type: String,
-    required: true,
   },
   //8 Chara String Denoting Attack Directions (1/0 for True/False. Char Map represents, Upper Left, Up, Upper Right, Left, Right, Down Left, Down, Down Right)
   //Example 10100010 = Summon can attack Upper Left, Upper Right, and Down

@@ -15,6 +15,12 @@ const cardSchema = new Schema({
   cardType: {
     type: String,
     required: true
+  },
+  //Qty Owned by Player
+  cardQty: {
+    type: Number,
+    required: true,
+    default: 1
   }
 });
 
