@@ -1,0 +1,16 @@
+/* This CSS File is used for all pages that are invovling card displays OUTSIDE of the game page */
+
+.cardInventory {
+  height: 250px;
+  width: 250px;
+  text-align: center; 
+  /* border: solid;  */
+}
+
+.cardImgDisplay {
+  align-self: center;
+}
+
+.typeH { 
+  font-size: 40px;
+}

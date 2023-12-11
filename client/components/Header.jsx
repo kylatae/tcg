@@ -22,8 +22,8 @@ export default function Header() {
 
             {user?._id !== undefined && (
               <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-                <Nav.Link className="dropdown-item" href="/private">Private Page</Nav.Link>
-                <Nav.Link className="dropdown-item" href="/deckbuilder">Deck Builder</Nav.Link>
+                <Nav.Link className="dropdown-item" href="/viewcards">View Cards</Nav.Link>
+                <Nav.Link className="dropdown-item" href="/allview">Deck Builder</Nav.Link>
                 <Nav.Link className="dropdown-item" href="/logout">Logout</Nav.Link>
 
 

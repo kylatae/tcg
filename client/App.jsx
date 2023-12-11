@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AppProvider from './utils/AppProvider';
 import { Header, ProtectedRoute } from './components';
-import { HomePage, AuthPage, Logout, PrivatePage, RulesPage } from './pages/'
+import { HomePage, AuthPage, Logout, ViewCards, RulesPage, AllView } from './pages/'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -19,10 +19,14 @@ export default function App(){
             <Route path="/" element={<HomePage />} />
             <Route path="/rules" element={<RulesPage />} />
             <Route path="/auth" element={<AuthPage />} />
-
-            <Route path="/private" element={
+            <Route path="/allview" element={
               <ProtectedRoute>
-                <PrivatePage />
+                <AllView />
+              </ProtectedRoute>
+            }/>
+            <Route path="/viewcards" element={
+              <ProtectedRoute>
+                <ViewCards />
               </ProtectedRoute>
             }/>
             <Route path="/logout" element={<Logout />} />
