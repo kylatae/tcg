@@ -12,11 +12,13 @@ export default function CardShop(){
   const [booster, setBooster] = useState(null);
   const [packSelect, setPackSelect] = useState("ElfBooster");
   const [show, setShow] = useState(false);
+  //For refreshing the page after changing boosterpack type
   const [updateDom, setUpdateDom] = useState(true);
 
   function handleInputChange(e){
     setPackSelect( e.target.value )
   }
+  //Set cardInfo and infoHide are for setting up the information on a card when it is selected to be populated into a modal for plain text info on a card
   const [cardInfo, setCardInfo] = useState(
     {
       tribe: "", 
@@ -31,6 +33,7 @@ export default function CardShop(){
       effect: ""
     })
 
+  
   const defaultInfoHide = {
     tribe: true, 
     passive: true, 
@@ -85,27 +88,22 @@ const buyBooster= () => {
     if (spendCoin){
       payBooster()
       var currentCards = appCtx.user.inventory.cards
-      console.log(currentCards)
       for(let i=0; i< 5; i++)
       {
         //Random number 1-10000 to distribute random card based on roll
         var randomRoll = Math.floor(Math.random() * (10000 - 1 + 1) + 1)
-        console.log(randomRoll)
         for(let z=0; z < booster.cardPack.length; z++)
         {
           //This loop is checking all rolls in ascending order until it finds which card is in the win range then returns it
           if (randomRoll <= (booster.cardPack[z].cardPercents))
           {
-            alert(`You just got a `)
+            
             var addCard = currentCards.find(id => id.cardId === booster.cardPack[z].cardId)
-            // if (addCard === undefined)
-            // {
-            //   console.log ("New Card")
-
-            // }
             addNewCard(booster.cardPack[z])
-            console.log (addCard)
-            console.log(booster.cardPack[z])
+            var cardName = moreInfo(booster.cardPack[z].cardId, booster.cardPack[z].cardType)
+            setShow(false)
+            alert(`You received ${cardName}, a ${booster.cardPack[z].cardType} card!`)
+
             break;
           }
         }
@@ -131,7 +129,6 @@ async function addNewCard(newCard){
       }
     })
     const response = await query.json()
-    console.log(response)
   } catch(err){
     console.log(err.message)
   }
@@ -140,8 +137,7 @@ async function addNewCard(newCard){
 async function payBooster(){
 
   const finalPath = `/api/user/paycards`
-  const sendInfo = {_id: appCtx.user._id, currency: (appCtx.user.inventory.currency-1)}
-  console.log(sendInfo)
+  const sendInfo = {_id: appCtx.user._id, currency: (appCtx.user.inventory.currency-15)}
   try {
     const query = await fetch(finalPath, {
       method: "POST",
@@ -151,7 +147,7 @@ async function payBooster(){
       }
     })
     const response = await query.json()
-    console.log(response)
+    location.reload();
   } catch(err){
     console.log(err.message)
   }
@@ -181,7 +177,7 @@ const moreInfo = (curCardId, curCardType) => {
           effect: true
         })
         setShow(true)
-      return 
+      return summonerOut.name
     case "Spell":
       const spellOut = cardCtx?.cardIndex?.Spell?.find(({cardId}) => cardId === `${curCardId}`);
       setCardInfo(
@@ -205,7 +201,7 @@ const moreInfo = (curCardId, curCardType) => {
           effect: true
         })
         setShow(true)
-      return
+      return spellOut.name
     case "Summon":
       const summonOut = cardCtx?.cardIndex?.Summon?.find(({cardId}) => cardId === `${curCardId}`);
       setCardInfo(
@@ -231,7 +227,7 @@ const moreInfo = (curCardId, curCardType) => {
           effect: true
         })
         setShow(true)
-      return
+      return summonOut.name
     case "Trap":
       const trapOut = cardCtx?.cardIndex?.Trap?.find(({cardId}) => cardId === `${curCardId}`);
       setCardInfo(
@@ -254,7 +250,7 @@ const moreInfo = (curCardId, curCardType) => {
           effect: false
         })
         setShow(true)
-      return
+      return trapOut.name
     default:
       return
   }
@@ -286,6 +282,7 @@ if(updateDom){
           </Container>
         </Modal.Body>
       </Modal>
+
       <Container>
           <Row>
             <Col className="topColItems" xs="12" sm="8" md="6" lg="4" xxl="4">
@@ -299,7 +296,7 @@ if(updateDom){
                 </select>
             </Col>
             <Col className="topColItems" xs="12" sm="8" md="6" lg="4" xxl="4">
-              <label className="d-block">Would you like to purchase a booster pack of 5 cards for 15 coins?</label>
+              <label className="d-block">Would you like to purchase a booster pack of 5 cards for 15 coins? Duplicates auto sell for 1 coin return.</label>
               <Button onClick={()=>{buyBooster()}}>Purchase Pack</Button>
             </Col>
             <Col className="topColItems" xs="12" sm="8" md="6" lg="4" xxl="4">
