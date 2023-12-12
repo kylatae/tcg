@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AppProvider from './utils/AppProvider';
 import CardProvider from './utils/CardProvider';
 import { Header, ProtectedRoute } from './components';
-import { HomePage, AuthPage, Logout, ViewCards, RulesPage, AllView } from './pages/'
+import { HomePage, AuthPage, Logout, ViewCards, RulesPage, AllView, CardShop } from './pages/'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './css/style.css';
 
 
 
@@ -24,6 +24,11 @@ export default function App(){
             <Route path="/allview" element={
               <ProtectedRoute>
                 <AllView />
+              </ProtectedRoute>
+            }/>
+            <Route path="/cardshop" element={
+              <ProtectedRoute>
+                <CardShop />
               </ProtectedRoute>
             }/>
             <Route path="/viewcards" element={

@@ -10,7 +10,9 @@ const {
   updateUserById, 
   deleteUserById, 
   authenticate, 
-  verifyUser 
+  verifyUser,
+  addNewCard,
+  payForCards
 } = require('../../controllers/user.controller');
 const {
   getBoosterByName,
@@ -126,5 +128,24 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ result: "error", payload: err.message })
   }
 })
+
+router.post("/addcard", async (req, res) => {
+  try {
+    const payload = await addNewCard(req.body)
+    res.status(200).json({ result: "success", payload })
+  } catch(err){
+    res.status(500).json({ result: "error", payload: err.message })
+  }
+})
+
+router.post("/paycards", async (req, res) => {
+  try {
+    const payload = await payForCards(req.body)
+    res.status(200).json({ result: "success", payload })
+  } catch(err){
+    res.status(500).json({ result: "error", payload: err.message })
+  }
+})
+
 
 module.exports = router;
