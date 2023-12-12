@@ -3,7 +3,7 @@ import AppProvider from './utils/AppProvider';
 import { Header, ProtectedRoute } from './components';
 import { HomePage, AuthPage, Logout, PrivatePage, RulesPage } from './pages/'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './css/style.css';
 
 
 
