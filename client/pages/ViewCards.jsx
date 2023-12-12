@@ -1,5 +1,5 @@
-import {Container, Button, Row, Col, Modal} from 'react-bootstrap';
-import {useState, useEffect} from "react"
+import {Container, Row, Col, Modal} from 'react-bootstrap';
+import {useState} from "react"
 import {useAppCtx} from "../utils/AppProvider"
 import {useCardCtx} from "../utils/CardProvider"
 import "../css/menuView.css"
@@ -9,7 +9,7 @@ export default function ViewCards(){
   const appCtx = useAppCtx()
   const cardCtx = useCardCtx()
   //Used for Array Map Type  Headers
-  const typeMap = [{name: "Summoner"}, {name: "Spell"}, {name: "Trap"}, {name: "Summon"}]
+  const typeMap = [{name: "Summoner"}, {name: "Summon"}, {name: "Trap"}, {name: "Spell"}];
   const [show, setShow] = useState(false);
   const [cardInfo, setCardInfo] = useState(
     {
@@ -44,10 +44,6 @@ export default function ViewCards(){
     setInfoHide(defaultInfoHide)
     setShow(false)
   }
-
-  useEffect(() =>{
-  }, [infoHide])
-
 
 
 if (!appCtx?.user?.inventory) return <>Loading...</>
@@ -198,5 +194,3 @@ const moreInfo = (curCardId, curCardType) => {
     </>
   )
 }
-
-// <body>Name: {getName(cards.cardId, mapType.name)}</body>

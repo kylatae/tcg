@@ -20,6 +20,11 @@
   font-size: 40px;
 }
 
+.topColItems {
+  text-align: center;
+  height: 150px;
+}
+
 .itemTitle {
   text-align: right
 }
