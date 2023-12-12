@@ -14,7 +14,7 @@ export default function AppProvider(props){
   async function verifyUser(){
     const cookie = Cookie.get("auth-cookie")
 
-    if(!cookie && window.location.pathname !== "/" && !window.location.pathname.includes("/auth")){
+    if(!cookie && window.location.pathname !== "/" && !window.location.pathname.includes("/auth") && !window.location.pathname.includes("/rules")){
       window.location.href = "/auth"
     }
     
@@ -25,7 +25,7 @@ export default function AppProvider(props){
         setUser(response.payload)
       }
     } catch(err){
-      if( window.location.pathname !== "" && !window.location.pathname.includes("/auth")) {
+      if( window.location.pathname !== "" && !window.location.pathname.includes("/auth") && !window.location.pathname.includes("/rules")) {
         window.location.href = "/auth"
       }
     }

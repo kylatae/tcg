@@ -14,28 +14,28 @@ export default function App(){
   return (
     <AppProvider>
       <CardProvider>
-        <BrowserRouter>
-          <Header />
-          <div className="container pt-5">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/rules" element={<RulesPage />} />
-              <Route path="/auth" element={<AuthPage />} />
-              <Route path="/allview" element={
-                <ProtectedRoute>
-                  <AllView />
-                </ProtectedRoute>
-              }/>
-              <Route path="/viewcards" element={
-                <ProtectedRoute>
-                  <ViewCards />
-                </ProtectedRoute>
-              }/>
-              <Route path="/logout" element={<Logout />} />
-            </Routes>
+      <BrowserRouter>
+        <Header />
+        <div className="container pt-5">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/rules" element={<RulesPage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/allview" element={
+              <ProtectedRoute>
+                <AllView />
+              </ProtectedRoute>
+            }/>
+            <Route path="/viewcards" element={
+              <ProtectedRoute>
+                <ViewCards />
+              </ProtectedRoute>
+            }/>
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
 
-          </div>
-        </BrowserRouter>
+        </div>
+      </BrowserRouter>
       </CardProvider>
     </AppProvider>
   )
