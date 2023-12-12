@@ -4,7 +4,7 @@ import CardProvider from './utils/CardProvider';
 import { Header, ProtectedRoute } from './components';
 import { HomePage, AuthPage, Logout, ViewCards, RulesPage, AllView, CardShop, DeckBuilder } from './pages/'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './css/style.css';
 
 
 
