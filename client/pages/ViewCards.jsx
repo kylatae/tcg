@@ -46,7 +46,6 @@ export default function ViewCards(){
   }
 
   useEffect(() =>{
-    console.log(infoHide)
   }, [infoHide])
 
 
@@ -58,7 +57,6 @@ const moreInfo = (curCardId, curCardType) => {
   switch (curCardType){
     case "Summoner":
       const summonerOut = cardCtx?.cardIndex?.Summoner?.find(({cardId}) => cardId === `${curCardId}`);
-      console.log (summonerOut.name)
       setCardInfo(
         {
           name: summonerOut.name, 
@@ -158,26 +156,6 @@ const moreInfo = (curCardId, curCardType) => {
   }
 }
 
-// function getName(curCardId, curCardType){
-//   console.log(curCardType)
-//   switch (curCardType){
-//     case "Summoner":
-//       const summonerOut = cardCtx?.cardIndex?.Summoner?.find(({cardId}) => cardId === `${curCardId}`);
-//       return `${summonerOut?.name}`
-//     case "Spell":
-//       const spellOut = cardCtx?.cardIndex?.Spell?.find(({cardId}) => cardId === `${curCardId}`);
-//       return`${spellOut?.name}`
-//     case "Summon":
-//       const summonOut = cardCtx?.cardIndex?.Summon?.find(({cardId}) => cardId === `${curCardId}`);
-//       return`${summonOut?.name}`
-//     case "Trap":
-//       const trapOut = cardCtx?.cardIndex?.Trap?.find(({cardId}) => cardId === `${curCardId}`);
-//       return`${trapOut?.name}`
-//     default:
-//       return
-//   }
- 
-// }
 //The display below is a array map in an array map. The first map is for the Rows which is the typeMap variable created above.
 //The second map is for the columns which displays the actual cards. On the page it displays All Cards while putting in headers
 //for the different types.
