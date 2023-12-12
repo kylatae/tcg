@@ -135,6 +135,22 @@ async function payForCards(data) {
 }
 
 
+async function updateDeck(data) {
+  try {
+    console.log(data)
+    console.log(data.cards)
+    addACard = await User.findOneAndUpdate(
+      {_id: data._id,}, 
+      {$set: {"savedDeck.summoner": data.cards} }, 
+      {new: true, upsert:true})
+    console.log (addACard)
+    return addACard
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+
 module.exports = {
   getAllUsers: getAllItems,
   getUserById: getItemById,
@@ -144,5 +160,6 @@ module.exports = {
   authenticate,
   verifyUser,
   addNewCard,
-  payForCards
+  payForCards,
+  updateDeck
 }

@@ -24,7 +24,7 @@ export default function Header() {
               <DropdownButton variant="secondary" title="Main Menu">
                 <Dropdown.Item href="/viewcards">View Cards</Dropdown.Item>
                 <Dropdown.Item href="/cardshop">Card Shop</Dropdown.Item>
-                <Dropdown.Item className="dropdown-item" href="/allview">Deck Builder</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item" href="/deckbuilder">Deck Builder</Dropdown.Item>
                 <Dropdown.Item className="dropdown-item" href="/logout">Logout</Dropdown.Item>
               </DropdownButton>
 

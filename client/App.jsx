@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AppProvider from './utils/AppProvider';
 import CardProvider from './utils/CardProvider';
 import { Header, ProtectedRoute } from './components';
-import { HomePage, AuthPage, Logout, ViewCards, RulesPage, AllView, CardShop } from './pages/'
+import { HomePage, AuthPage, Logout, ViewCards, RulesPage, AllView, CardShop, DeckBuilder } from './pages/'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -34,6 +34,11 @@ export default function App(){
             <Route path="/viewcards" element={
               <ProtectedRoute>
                 <ViewCards />
+              </ProtectedRoute>
+            }/>
+            <Route path="/deckbuilder" element={
+              <ProtectedRoute>
+                <DeckBuilder />
               </ProtectedRoute>
             }/>
             <Route path="/logout" element={<Logout />} />
