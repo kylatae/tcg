@@ -16,7 +16,6 @@ export default function AllViewTest(props){
       const response = await query.json()
       if( response.result === "success" ){
         setCardIndex(response.payload)
-        console.log (response.payload)
       }
     } catch(err){
       console.log(err)

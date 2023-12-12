@@ -16,7 +16,7 @@ export default function CardProvider(props){
       const response = await query.json()
       if( response.result === "success" ){
         setCardIndex(response.payload)
-        console.log (response.payload)
+        console.log(response.payload)
       }
     } catch(err){
       console.log(err)
@@ -31,7 +31,7 @@ export default function CardProvider(props){
 
 
   return (
-    <CardContext.Provider value={{ user, fetchCards }}>
+    <CardContext.Provider value={{ cardIndex, fetchCards }}>
       { props.children }
     </CardContext.Provider>
   )

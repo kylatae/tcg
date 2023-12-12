@@ -11,6 +11,16 @@
   align-self: center;
 }
 
+.cardImgDisplay:hover {
+  opacity:.5;
+}
+
+
 .typeH { 
   font-size: 40px;
 }
+
+.itemTitle {
+  text-align: right
+}
+
