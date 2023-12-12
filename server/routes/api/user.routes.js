@@ -97,6 +97,17 @@ router.post("/auth", async (req, res) => {
   }
 })
 
+router.post("/getAllCards", async (req, res) => {
+  try {
+    const user = await authenticate(req.body)
+    const token = createToken(user.email, user._id)
+    const payload = stripPassword(user)
+    res.cookie("auth-cookie", token).json({ result: "success", payload })
+  }catch(err){
+    res.status(500).json({ result: "error", payload: "Could not authenticate user"})
+  }
+})
+
 router.put("/:id", async (req, res) => {
   try {
     const user = await updateUserById(req.params.id, req.body)
