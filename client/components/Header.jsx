@@ -23,6 +23,7 @@ export default function Header() {
             {user?._id !== undefined && (
               <DropdownButton variant="secondary" title="Main Menu">
                 <Dropdown.Item href="/viewcards">View Cards</Dropdown.Item>
+                <Dropdown.Item href="/cardshop">Card Shop</Dropdown.Item>
                 <Dropdown.Item className="dropdown-item" href="/allview">Deck Builder</Dropdown.Item>
                 <Dropdown.Item className="dropdown-item" href="/logout">Logout</Dropdown.Item>
               </DropdownButton>

@@ -92,6 +92,48 @@ async function deleteItemById(id) {
   }
 }
 
+async function addNewCard(data) {
+  try {
+    //Checks if card exists
+    var preCheck = await User.findOne({_id: data._id})
+    if (preCheck.inventory.cards.find(({cardId}) => cardId === `${data.cardId}`) === undefined){
+    //Adds if it doesnt
+    console.log ("New Card")
+    addACard = await User.findOneAndUpdate(
+      {_id: data._id,}, 
+      {$push: 
+        {"inventory.cards": 
+          {cardId: data.cardId, cardType: data.cardType, cardQty: 1}
+        }
+      }, 
+      {new: true, upsert:true})
+    }
+    else{
+      //Gives the user 1 coin (sells duplicates) if it does exist
+      addACard = await User.findOneAndUpdate(
+        {_id: data._id,}, 
+        {"inventory.currency": (Number(preCheck.inventory.currency)+1) }, 
+        {new: true, upsert:true})
+    }
+    return preCheck
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function payForCards(data) {
+  try {
+
+    addACard = await User.findOneAndUpdate(
+      {_id: data._id,}, 
+      {"inventory.currency": data.currency }, 
+      {new: true, upsert:true})
+    return addACard
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 
 module.exports = {
   getAllUsers: getAllItems,
@@ -100,5 +142,7 @@ module.exports = {
   updateUserById: updateItemById,
   deleteUserById: deleteItemById,
   authenticate,
-  verifyUser
+  verifyUser,
+  addNewCard,
+  payForCards
 }
