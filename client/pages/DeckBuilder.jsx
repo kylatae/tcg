@@ -109,9 +109,7 @@ export default function DeckBuilder(){
   }
 
   async function updateDeck(e){
-
     e.preventDefault()
-    console.log (e.target)
 
     const finalPath = `/api/user/updatedeck`
     var tempInfo = {}
@@ -139,9 +137,7 @@ export default function DeckBuilder(){
         break;          
                     
     }
-    console.log(tempInfo)
     var sendInfo = {cards: tempInfo, _id: appCtx.user._id }
-    console.log(sendInfo)
 
     try {
       const query = await fetch(finalPath, {
@@ -290,9 +286,6 @@ export default function DeckBuilder(){
     }
   }
 
-//The display below is a array map in an array map. The first map is for the Rows which is the typeMap variable created above.
-//The second map is for the columns which displays the actual cards. On the page it displays All Cards while putting in headers
-//for the different types.
   if (updateDom){
     return (
       <>

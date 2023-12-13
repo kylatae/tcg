@@ -25,7 +25,11 @@ export default function Header() {
                 <Dropdown.Item href="/viewcards">View Cards</Dropdown.Item>
                 <Dropdown.Item href="/cardshop">Card Shop</Dropdown.Item>
                 <Dropdown.Item className="dropdown-item" href="/deckbuilder">Deck Builder</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item">-----------------</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item" href="/gameboard">Start Game</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item">-----------------</Dropdown.Item>
                 <Dropdown.Item className="dropdown-item" href="/logout">Logout</Dropdown.Item>
+
               </DropdownButton>
 
             )}

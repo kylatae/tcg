@@ -1,0 +1,74 @@
+.tableFormat{
+  text-align: center;
+}
+
+.rowFormat{
+  height: 170px;
+}
+
+.colFormat{
+  height: 150px;
+  width: 150px;
+  outline: solid 10px;
+  padding: 0px;
+  margin:0px;
+  table-layout: fixed;
+  position: absolute;
+}
+
+.tableScore{
+  text-align: center;
+}
+
+.rowScore{
+  height: 170px;
+}
+
+.colScore{
+  height: 150px;
+  width: 350px;
+  outline: solid 10px;
+  padding: 0px;
+  margin:0px;
+  table-layout: fixed;
+  position: absolute;
+}
+
+.tableHand{
+  text-align: center;
+}
+
+.rowHand{
+  height: 170px;
+}
+
+.colHand{
+  height: 150px;
+  width: 350px;
+  outline: solid 10px;
+  padding: 0px;
+  margin:0px;
+  table-layout: fixed;
+  position: absolute;
+}
+
+.cardHand{
+  position: absolute;
+  height: 150px;
+  width: 150px;
+}
+
+.cardHand:hover {
+  top: -100px;
+  height: 200px;
+  width: 200px;
+  z-index: 10;
+}
+
+.cardBoard{
+  position:absolute;
+  height:150px;
+  width:150px;
+  left: 0px;
+  top: 0px;
+}

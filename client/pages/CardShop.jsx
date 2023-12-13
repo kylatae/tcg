@@ -256,9 +256,6 @@ const moreInfo = (curCardId, curCardType) => {
   }
 }
 
-//The display below is a array map in an array map. The first map is for the Rows which is the typeMap variable created above.
-//The second map is for the columns which displays the actual cards. On the page it displays All Cards while putting in headers
-//for the different types.
 if(updateDom){
   return (
     <>
@@ -300,7 +297,6 @@ if(updateDom){
                 <option value="MonsterBooster">Monster Booster</option>
                 <option value="MercBooster">Merc Booster</option>
               </select>
-              {console.log(packSelect)}
             </Col>
             <Col className="topColItems" xs="12" sm="8" md="6" lg="4" xxl="4">
               <label className="d-block">Would you like to purchase a booster pack of 5 cards for 15 coins? Duplicates auto sell for 1 coin return.</label>
