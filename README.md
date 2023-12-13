@@ -1,9 +1,12 @@
-# Warlords of Tetris
+# Warlords of Ravagea
 
 ![Welcome To Warlords](./client/public/img/scapePic.jpg)
 
 ## Description
 
+
+
+![Dwarvespack](./client/public/img/wotcardpack2.png)
 
 ## Table of Contents
 
@@ -25,7 +28,7 @@ The associated GitHub repo can be accessed [here](https://github.com/kylatae/tcg
 
   <a id="technicalrequirements"></a>
 
-## Technical Requirements
+## Tech Stack
 
 
 
