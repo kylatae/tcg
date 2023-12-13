@@ -19,6 +19,14 @@ h1, h2, h3 {
   margin: 20px;
 }
 
+
+
+h1, h2, h3 {
+  text-align: center;
+  margin: 20px;
+}
+
+
 h4 {
   margin: 20px;
 }
@@ -43,6 +51,7 @@ h5{
   flex-direction: column;
   align-items: center;
   margin: 30px;
+
 }
 
 .funCharaDwarf{
@@ -222,6 +231,5 @@ h5{
   100%{opacity: 0;
 
   }
-
 
 }
