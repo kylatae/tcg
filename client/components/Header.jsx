@@ -14,8 +14,13 @@ export default function Header() {
 
   return (
     <Navbar className="bg-body-tertiary navBarHeader" >
+      <img src={'./img/Dwarf.png'} className={"funCharaDwarf"}/>
+      <img src={'./img/Elf.png'} className={"funCharaElf"}/>
+      <img src={'./img/Human.png'} className={"funCharaHuman"}/>
       <Container className="justify-content-between">
         <Nav.Link  href="/rules">Rules Page</Nav.Link>
+        
+        
         <Navbar.Brand href="/">Warlords of Ravagea</Navbar.Brand>
 
           <Nav className="me-center">
