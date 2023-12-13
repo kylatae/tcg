@@ -5,3 +5,16 @@ body{
                                                 
   background-color: #462f4a;
 }
+
+/* Setting the top navBar to being fixed at all times */
+.navBarHeader{
+  position: fixed;
+  left:0;
+  top:0;
+  width: 100%;
+}
+
+.headerSpacer {
+  margin: 20px;
+}
+

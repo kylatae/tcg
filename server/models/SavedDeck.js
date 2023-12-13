@@ -8,18 +8,18 @@ const savedDeckSchema = new Schema({
   },
   //1 Summoner Card
   summoner: {
-    type: String,
+    type: Array,
   },
   //5 Spell Cards
   spell: {
-    type: String,
+    type: Array,
   },
   //combined 40 Cards between trap and summon cards
   summon: {
-    type: String,
+    type: Array,
   },
   trap: {
-    type: String,
+    type: Array,
   }
   
   },

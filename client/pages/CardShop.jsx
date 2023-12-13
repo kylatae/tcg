@@ -256,12 +256,12 @@ const moreInfo = (curCardId, curCardType) => {
   }
 }
 
-//The display below is a array map in an array map. The first map is for the Rows which is the typeMap variable created above.
-//The second map is for the columns which displays the actual cards. On the page it displays All Cards while putting in headers
-//for the different types.
 if(updateDom){
   return (
     <>
+    <Container className="boosterContainer">
+    <img className={"boosterImgDisplay"} src={`/img/boosters/${packSelect}.png`} />
+    </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{cardInfo.name}</Modal.Title>
@@ -285,15 +285,18 @@ if(updateDom){
 
       <Container>
           <Row>
+            <Col className={"pageH"} xs="12">Card Shop</Col>
+          </Row>
+          <Row>
             <Col className="topColItems" xs="12" sm="8" md="6" lg="4" xxl="4">
               <label className ="d-block">Select Desired Booster Pack</label>
-                <select onChange={handleInputChange} defaultValue={packSelect} name="boosterName">
-                  <option value="ElfBooster">Elf Booster</option>
-                  <option value="HumanBooster">Human Booster</option>
-                  <option value="DwarfBooster">Dwarf Booster</option>
-                  <option value="MonsterBooster">Monster Booster</option>
-                  <option value="MercBooster">Merc Booster</option>
-                </select>
+              <select onChange={handleInputChange} defaultValue={packSelect} name="boosterName">
+                <option value="ElfBooster">Elf Booster</option>
+                <option value="HumanBooster">Human Booster</option>
+                <option value="DwarfBooster">Dwarf Booster</option>
+                <option value="MonsterBooster">Monster Booster</option>
+                <option value="MercBooster">Merc Booster</option>
+              </select>
             </Col>
             <Col className="topColItems" xs="12" sm="8" md="6" lg="4" xxl="4">
               <label className="d-block">Would you like to purchase a booster pack of 5 cards for 15 coins? Duplicates auto sell for 1 coin return.</label>
@@ -309,14 +312,14 @@ if(updateDom){
 
       {typeMap.map((mapType) =>(
         <Container key={mapType.name}>
-          <Row className={"typeH"}> {mapType.name}s</Row>
+          <Row className={"typeH"}> {mapType.name}s - {booster.cardPack.filter(type => type.cardType == mapType.name).length}</Row>
           <Row>
             {booster.cardPack
               .filter(types => types.cardType == `${mapType.name}`)
               .map((cards) =>(
                 <Col key={cards.cardId} xs="12" sm="8" md="6" lg="4" xxl="3" className={"cardInventory"}>
                   <img onClick={()=>{moreInfo(cards.cardId, mapType.name)}} className={"cardImgDisplay"} src={`./img/card/${cards.cardId}.png`} height={"200px"} width={"200px"} />
-                  <p>{cards.dropPercentage*100}%</p>
+                  <p className={"percentDrops"}>{cards.dropPercentage*100}%</p>
                 </Col>
               ))}
           </Row>

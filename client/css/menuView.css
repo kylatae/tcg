@@ -1,5 +1,6 @@
 /* This CSS File is used for all pages that are invovling card displays OUTSIDE of the game page */
 
+/* Cells the card images are located in */
 .cardInventory {
   height: 250px;
   width: 250px;
@@ -7,25 +8,86 @@
   /* border: solid;  */
 }
 
+/* Card Image formatting */
 .cardImgDisplay {
   align-self: center;
 }
-
 .cardImgDisplay:hover {
   opacity:.5;
 }
 
-
-.typeH { 
-  font-size: 40px;
+/* Used specifically for the Booster Pack Images in the Card Shop */
+.boosterImgDisplay {
+  align-self: center;
+  display: inline;
+  position: absolute;
+  width: 100vw;
+  max-width: 100vh;
+  position: fixed;
+  opacity: 50%;
+  top:0px;
+  z-index: -1;
+  animation: fadeOut 3s;
+  justify-self: center;
+}
+.boosterContainer {
+  top:0px;
+  left:0px;
+  width:100vh;
 }
 
+/* Drop percentage on booster pack */
+.percentDrops{
+  text-shadow: 2px 2px 25px  #000, -2px -2px 25px  #000, 2px -2px 25px  #000, -2px 2px 25px  #000;
+  font-size: 16px;
+}
+
+/* Type Header's on display (Summoner, Summons etc) */
+.typeH { 
+  font-size: 36px;
+  text-shadow: 2px 2px 25px  #000, -2px -2px 25px  #000, 2px -2px 25px  #000, -2px 2px 25px  #000;
+}
+
+/* Page Header (Card Shop, Deck Builder etc) */
+.pageH {
+  font-size: 56px;
+  text-align: center;
+  text-shadow: 2px 2px 25px  #000, -2px -2px 25px  #000, 2px -2px 25px  #000, -2px 2px 25px  #000;
+}
+
+/* Extra info on pages, mainly written text */
 .topColItems {
   text-align: center;
-  height: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-shadow: 2px 2px 25px  #000, -2px -2px 25px  #000, 2px -2px 25px  #000, -2px 2px 25px  #000;
 }
 
+/* Tag to right align something in a cell such as Coins in Card Shop */
 .itemTitle {
-  text-align: right
+  text-align: right;
 }
 
+/* Booster Pack animation setup */
+@keyframes fadeOut { 
+  0%, 
+  0% { 
+      opacity: 1;
+      z-index: 10; 
+  } 
+  50%{
+    opacity: 1
+  }
+  80%{
+    opacity: .5;
+    z-index: -1;
+  }
+
+}
+
+@media only screen and (max-width: 1000px){
+  .boosterImgDisplay {
+left: 0px
+  }
+}

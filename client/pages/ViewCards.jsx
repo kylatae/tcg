@@ -177,9 +177,14 @@ const moreInfo = (curCardId, curCardType) => {
           </Container>
         </Modal.Body>
       </Modal>
+      <Container>
+        <Row>
+          <Col className={"pageH"} xs="12">Your Card Inventory</Col>
+        </Row>
+      </Container>        
       {typeMap.map((mapType) =>(
         <Container key={mapType.name}>
-          <Row className={"typeH"}> {mapType.name}s</Row>
+          <Row className={"typeH"}> {mapType.name}s - {appCtx.user.inventory.cards.filter(type => type.cardType == mapType.name).length}</Row>
           <Row>
             {appCtx.user.inventory.cards
               .filter(types => types.cardType == `${mapType.name}`)

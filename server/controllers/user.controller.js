@@ -135,6 +135,57 @@ async function payForCards(data) {
 }
 
 
+async function updateDeck(data) {
+  try {
+    // originally had this 
+    //  tempType=data.cards[0].cardType.toLowerCase() 
+    //  saveType = `"savedDeck.${tempType}"` // output:  "savedDeck.summoner"
+    //  saveType = `savedDeck.${tempType}` // output: savedDeck.spell
+    // which was giving me the proper output for the $set location but not actually working when the variable was used in doing
+    // saveType was done in two seperate attempts with and without quotes in the variable itself. 
+    // addACard = await User.findOneAndUpdate(
+    //   {"_id": data._id,}, 
+    //   {$set: {saveType: data.cards} }, 
+    //   {new: true, upsert:true})
+    // For this reason I just put up a switch statement that is managing which array to put them in by type.
+    switch (data.cards[0].cardType){
+      case "Summoner":
+        addACard = await User.findOneAndUpdate(
+          {"_id": data._id,}, 
+          {$set: {"savedDeck.summoner": data.cards} }, 
+          {new: true, upsert:true})
+          console.log (addACard.savedDeck)
+        break;
+      case "Spell":
+        addACard = await User.findOneAndUpdate(
+          {"_id": data._id,}, 
+          {$set: {"savedDeck.spell": data.cards} }, 
+          {new: true, upsert:true})
+          console.log (addACard.savedDeck)
+        break;
+      case "Trap":
+        addACard = await User.findOneAndUpdate(
+          {"_id": data._id,}, 
+          {$set: {"savedDeck.trap": data.cards} }, 
+          {new: true, upsert:true})
+          console.log (addACard.savedDeck)
+        break;
+      case "Summon":
+        addACard = await User.findOneAndUpdate(
+          {"_id": data._id,}, 
+          {$set: {"savedDeck.summon": data.cards} }, 
+          {new: true, upsert:true})
+          console.log (addACard.savedDeck)
+        break;
+                          
+    }
+    return addACard
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+
 module.exports = {
   getAllUsers: getAllItems,
   getUserById: getItemById,
@@ -144,5 +195,6 @@ module.exports = {
   authenticate,
   verifyUser,
   addNewCard,
-  payForCards
+  payForCards,
+  updateDeck
 }

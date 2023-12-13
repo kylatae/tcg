@@ -13,10 +13,10 @@ export default function Header() {
   const { user } = useAppCtx()
 
   return (
-    <Navbar className="bg-body-tertiary " >
+    <Navbar className="bg-body-tertiary navBarHeader" >
       <Container className="justify-content-between">
         <Nav.Link  href="/rules">Rules Page</Nav.Link>
-        <Navbar.Brand href="/">Warlords</Navbar.Brand>
+        <Navbar.Brand href="/">Warlords of Traetoria</Navbar.Brand>
 
           <Nav className="me-center">
 
@@ -24,8 +24,12 @@ export default function Header() {
               <DropdownButton variant="secondary" title="Main Menu">
                 <Dropdown.Item href="/viewcards">View Cards</Dropdown.Item>
                 <Dropdown.Item href="/cardshop">Card Shop</Dropdown.Item>
-                <Dropdown.Item className="dropdown-item" href="/allview">Deck Builder</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item" href="/deckbuilder">Deck Builder</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item">-----------------</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item" href="/gameboard">Start Game</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item">-----------------</Dropdown.Item>
                 <Dropdown.Item className="dropdown-item" href="/logout">Logout</Dropdown.Item>
+
               </DropdownButton>
 
             )}
