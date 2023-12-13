@@ -20,13 +20,25 @@
   <a id="links"></a>
 
 ## Links
-The deployed website can be accessed [here]()
+The deployed website can be accessed [here](https://warlordsofravegea-c36fa2705fc4.herokuapp.com/)
 
 The associated GitHub repo can be accessed [here](https://github.com/kylatae/tcg)
+
+
+
+
 
   <a id="technicalrequirements"></a>
 
 ## Tech Stack
+    -React/ Vite
+    -React Bootstrap
+    -Mongoose
+    -MongoDB
+    -Heroku
+    -GitHub
+    -Node
+    -Express
 
 
 
