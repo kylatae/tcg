@@ -1,41 +1,17 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 
-
-
 export default function RulesPage() {
 
     return (
         <>
-            <h1 style={{
-                display: "flex",
-                justifyContent: "center"
-            }}>Game Rules & FAQ</h1>
+            <h1>Game Rules & FAQ</h1>
 
-            <img style={{
-                display: "flex",
-                justifyContent: "center"
-            }} src="img/scapePic.jpg" alt="tree with sun" width="90%" height="80%" />
+            <img src="img/scapePic.jpg" alt="tree with sun" width="90%" height="80%" />
 
             <div>
-                <h2 style={{
-                    display: "flex",
-                    justifyContent: "center"
-                }}>Game Rules:</h2>
-                 <h3 style={{
-                    display: "flex",
-                    justifyContent: "center"
-                }}>card Types:</h3>
-
-                <div style={{
-                    display: "flex",
-                    justifyContent: "center"
-                }}>
-
-
-
-
-                </div>
+                <h2>Game Rules:</h2>
+                <h3>Card Types:</h3>
             </div>
 
             <Carousel>
@@ -48,7 +24,7 @@ export default function RulesPage() {
                     <div>
                     <Carousel.Caption>
                         <h5>Hero Card</h5>
-                        <p>1 per deck. This card has 1 special passive and 1 single time use skill per game. It also has a base health pool. When eliminated this player loses the game. It is displayed face up at the start of the game outside the board.
+                        <p className="caroP">1 per deck. This card has 1 special passive and 1 single time use skill per game. It also has a base health pool. When eliminated this player loses the game. It is displayed face up at the start of the game outside the board.
                         </p>
                     </Carousel.Caption>
                     </div>
@@ -61,7 +37,7 @@ export default function RulesPage() {
                     />
                     <Carousel.Caption>
                         <h5>Spell Card</h5>
-                        <p>Each player gets 5 spell cards played face down next to their hero card at the start of the game. Players may view their own spells at any time, and upon their first use they are turned face up for the remainder of the game. These cards use mana, are reusable, and do not change during the game.</p>
+                        <p className="caroP">Each player gets 5 spell cards played face down next to their hero card at the start of the game. Players may view their own spells at any time, and upon their first use they are turned face up for the remainder of the game. These cards use mana, are reusable, and do not change during the game.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -72,7 +48,7 @@ export default function RulesPage() {
                     />
                     <Carousel.Caption>
                         <h5>Summon Card</h5>
-                        <p>
+                        <p className="caroP">
                             Summon cards are placed directly on the board face-up. They have a level, health, and attack value. They also have directional arrows on each of the 4 corners and sides (8-Way Directional) showing the directions they can attack. A summon may also possess one ability. When placed on the board a summon will attack, and at the start of the owners turn, are healed back to full health. On death a summon goes to the discard pile.
 
                         </p>
@@ -86,15 +62,15 @@ export default function RulesPage() {
                     />
                     <Carousel.Caption>
                         <h5>Trap Card</h5>
-                        <p>
+                        <p className="caroP">
                             Trap cards are placed on the board face down. They are activated when ANY player hits them with a directional attack from a summoned creature. Once attacked the trap card is turned face up, its effect is used, and it is moved to the discard pile.
 
                         </p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            
-            <Card border="primary" style={{ width: '18rem' }}>
+            <div className="cardBox">
+            <Card border="primary" className="phaseCards">
                 <Card.Header>Mana Phase</Card.Header>
                 <Card.Body>
                     <Card.Text>
@@ -105,7 +81,7 @@ export default function RulesPage() {
             </Card>
             <br />
 
-            <Card border="light" style={{ width: '18rem' }}>
+            <Card border="light" className="phaseCards">
                 <Card.Header>Draw Phase</Card.Header>
                 <Card.Body>
 
@@ -122,7 +98,7 @@ export default function RulesPage() {
 
 
 
-            <Card border="light" style={{ width: '18rem' }}>
+            <Card border="light" className="phaseCards">
                 <Card.Header>Sacrifice Phase</Card.Header>
                 <Card.Body>
 
@@ -137,7 +113,7 @@ export default function RulesPage() {
             </Card>
             <br />
 
-            <Card border="light" style={{ width: '18rem' }}>
+            <Card border="light" className="phaseCards">
                 <Card.Header>Summoner Phase</Card.Header>
                 <Card.Body>
 
@@ -152,7 +128,7 @@ export default function RulesPage() {
             </Card>
             <br />
 
-            <Card border="light" style={{ width: '18rem' }}>
+            <Card border="light" className="phaseCards">
                 <Card.Header>Spell Phase</Card.Header>
                 <Card.Body>
 
@@ -169,7 +145,7 @@ export default function RulesPage() {
 
 
 
-            <Card border="light" style={{ width: '18rem' }}>
+            <Card border="light" className="phaseCards">
                 <Card.Header>Summon/Trap Phase</Card.Header>
                 <Card.Body>
 
@@ -183,7 +159,7 @@ export default function RulesPage() {
                 </Card.Body>
             </Card>
             <br />
-            <Card border="light" style={{ width: '18rem' }}>
+            <Card border="light" className="phaseCards">
                 <Card.Header>Attack Phase</Card.Header>
                 <Card.Body>
 
@@ -200,7 +176,7 @@ export default function RulesPage() {
                 </Card.Body>
             </Card>
             <br />
-            <Card border="danger" style={{ width: '18rem' }}>
+            <Card border="danger" className="phaseCards">
                 <Card.Header>Soul Phase</Card.Header>
                 <Card.Body>
 
@@ -217,7 +193,7 @@ export default function RulesPage() {
                     </Card.Text>
                 </Card.Body>
             </Card>
-            <br />
+            </div>
 
 
 
