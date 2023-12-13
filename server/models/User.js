@@ -25,17 +25,32 @@ const userSchema = new Schema({
         type: String,
       },
       cards: [cardSchema], },
-  savedDeck: [savedDeckSchema],
-
+  savedDeck:  {
+      summoner: {
+        type: [cardSchema],
+      },
+      //5 Spell Cards
+      spell: {
+        type: [cardSchema],
+      },
+      //combined 40 Cards between trap and summon cards
+      summon: {
+        type: [cardSchema],
+      },
+      trap: {
+        type: [cardSchema],
+      }
+  }
 },
 {
-  timestamps: true
+  timestamps: true,
 },
 );
 
 userSchema.pre("save", async function(next){
   this.password = await bcrypt.hash(this.password, 10)
   next()
+
 })
 
 const User = model('User', userSchema);

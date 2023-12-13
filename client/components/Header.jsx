@@ -13,10 +13,10 @@ export default function Header() {
   const { user } = useAppCtx()
 
   return (
-    <Navbar className="bg-body-tertiary " >
+    <Navbar className="bg-body-tertiary navBarHeader" >
       <Container className="justify-content-between">
         <Nav.Link  href="/rules">Rules Page</Nav.Link>
-        <Navbar.Brand href="/">Warlords</Navbar.Brand>
+        <Navbar.Brand href="/">Warlords of Traetoria</Navbar.Brand>
 
           <Nav className="me-center">
 

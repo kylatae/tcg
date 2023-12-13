@@ -1,5 +1,6 @@
 import {Container, Row, Col, Modal} from 'react-bootstrap';
 import {useState, useEffect} from "react"
+import {useNavigate} from "react-router-dom"
 import {useAppCtx} from "../utils/AppProvider"
 import {useCardCtx} from "../utils/CardProvider"
 import "../css/menuView.css"
@@ -8,15 +9,18 @@ export default function DeckBuilder(){
 
   const appCtx = useAppCtx()
   const cardCtx = useCardCtx()
+  const navigate = useNavigate()
   const [optionType, setOptionType] = useState("radio")
-  const [summonerSelect, setSummonerSelect] = useState({})
-  const [spellSelect, setSpellSelect] = useState({})
-  const [trapSelect, setTrapSelect] = useState({})
-  const [summonSelect, setSummonSelect] = useState({})
+  const [summonerSelect, setSummonerSelect] = useState([])
+  const [spellSelect, setSpellSelect] = useState([])
+  const [trapSelect, setTrapSelect] = useState([])
+  const [summonSelect, setSummonSelect] = useState([])
     //Used for setting the current selection for building a deck
   const [currentSelect, setCurrentSelect ] = useState("Summoner")
   const [show, setShow] = useState(false);
   const [updateDom, setUpdateDom] = useState(true);
+  const [selectionRequirements, setSelectionRequirements] = useState ("Select 1 Summoner")
+  const [selectedTotal, setSelectedTotal] = useState (0)
   const [cardInfo, setCardInfo] = useState(
     {
       tribe: "", 
@@ -61,16 +65,44 @@ export default function DeckBuilder(){
   const changeHandler = (e) =>{
     switch (currentSelect){
       case "Summoner":
-        setSummonerSelect({cardId: e.target.value, cardType: currentSelect})
+        setSummonerSelect([{cardId: e.target.value, cardType: currentSelect}])
+        setSelectedTotal(1)
         break;
       case "Spell":
-        setSpellSelect({...spellSelect, cardId: e.target.value, cardType: currentSelect})
+        const dupSpell = spellSelect.find(({cardId}) => cardId === `${e.target.value}`)
+        var spellChanges = spellSelect
+        if (dupSpell !== undefined){
+          const removeSpell = spellChanges.findIndex(x => x.cardId === e.target.value)
+          spellChanges.splice(removeSpell, 1)          
+        }else{
+          spellChanges = ([...spellSelect, {cardId: e.target.value, cardType: currentSelect}])
+        }
+        setSpellSelect(spellChanges)
+        setSelectedTotal(spellChanges.length)
         break;
       case "Trap":
-        setTrapSelect(e.target.value)
+        const dupTrap = spellSelect.find(({cardId}) => cardId === `${e.target.value}`)
+        var trapChanges = trapSelect
+        if (dupTrap !== undefined){
+          const removeTrap = trapChanges.findIndex(x => x.cardId === e.target.value)
+          trapChanges.splice(removeTrap, 1)          
+        }else{
+          trapChanges = ([...trapSelect, {cardId: e.target.value, cardType: currentSelect}])
+        }
+        setTrapSelect(trapChanges)
+        setSelectedTotal(trapChanges.length)
         break;
       case "Summon":
-        setSummonSelect(e.target.value)
+        const dupSummon = spellSelect.find(({cardId}) => cardId === `${e.target.value}`)
+        var summonChanges = summonSelect
+        if (dupSummon !== undefined){
+          const removeSummon = summonChanges.findIndex(x => x.cardId === e.target.value)
+          summonChanges.splice(removeSummon, 1)          
+        }else{
+          summonChanges = ([...summonSelect, {cardId: e.target.value, cardType: currentSelect}])
+        }
+        setSummonSelect(summonChanges)
+        setSelectedTotal(summonChanges.length)
         break;
                     
     }
@@ -90,13 +122,20 @@ export default function DeckBuilder(){
         break;
       case "Spell":
         tempInfo = spellSelect
+        if (tempInfo.length < 5){
+           alert("Please select exactly 5 spells")
+           return;
+        }
         break;
       case "Trap":
         tempInfo = trapSelect
         break;
       case "Summon":
         tempInfo = summonSelect
-        //redirect to cardpage
+        if (trapSelect.length+tempInfo.length < 25){
+          alert(`You selected ${trapSelect.length} traps, so you need to select ${25 - trapSelect.length} summon cards`)
+          return;
+          }
         break;          
                     
     }
@@ -113,20 +152,25 @@ export default function DeckBuilder(){
         }
       })
       const response = await query.json()
-
+      setSelectedTotal(0)
       switch (currentSelect){
         case "Summoner":
           setCurrentSelect("Spell")
+          setOptionType("checkbox")
+          setSelectionRequirements("Selected 5 Spells")
           break;
         case "Spell":
           setCurrentSelect("Trap")
+          setSelectionRequirements("Select a combined total of 25 Traps and Summons")
           break;
         case "Trap":
           setCurrentSelect("Summon")
+          setSelectionRequirements(`Select ${25 - trapSelect.length} Summons`)
           break;
         case "Summon":
           alert("Deck Saved")
-          //redirect to cardpage
+          navigate("/viewcards")
+
           break;          
                       
       }
@@ -250,7 +294,6 @@ export default function DeckBuilder(){
 //The second map is for the columns which displays the actual cards. On the page it displays All Cards while putting in headers
 //for the different types.
   if (updateDom){
-    console.log ("Maybe")
     return (
       <>
         <Modal show={show} onHide={handleClose}>
@@ -275,7 +318,14 @@ export default function DeckBuilder(){
         </Modal>
 
           <Container>
-            <Row className={"typeH"}> {currentSelect}s</Row>
+            <Row>
+              <Col className={"pageH"} xs="12">Deck Builder</Col>
+            <Row>
+              <Col xs="12" md="6" className={"topColItems"}>{selectionRequirements}</Col>
+              <Col xs="12" md="6" className={"topColItems"}>{selectedTotal} cards selected.</Col>
+            </Row>
+            </Row>
+            <Row className={"typeH"}> {currentSelect}s - {appCtx.user.inventory.cards.filter(type => type.cardType == currentSelect).length}</Row>
             <form onSubmit={updateDeck}>
             <Row>                
               {appCtx.user.inventory.cards

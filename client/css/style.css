@@ -5,3 +5,10 @@ body{
                                                 
   background-color: #462f4a;
 }
+
+.navBarHeader{
+  position: fixed;
+  left:0;
+  top:0;
+  width: 100vw;
+}
