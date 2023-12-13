@@ -1,6 +1,6 @@
 # Warlords of Ravagea
 
-![Dwarvespack](./client/public/img/wotcardpack2.png)
+![Dwarvespack](./client/public/img)
 
 ## Description
 
@@ -20,7 +20,7 @@
   <a id="links"></a>
 
 ## Links
-The deployed website can be accessed [here](https://warlordsoftraetoria-a6c327028c9d.herokuapp.com/)
+The deployed website can be accessed [here]()
 
 The associated GitHub repo can be accessed [here](https://github.com/kylatae/tcg)
 
@@ -51,15 +51,17 @@ This site was created by:
 
 ## Site Preview
 
-![viewcards](./client/public/img/warlordsscreenshot1.png)
+![homescreen](./client/public/img/worss1.png)
 
-![cardshop](./client/public/img/warlordsscreenshot2.png)
+![viewcards](./client/public/img/worss2.png)
 
-![deckbuilder](./client/public/img/warlordsscreenshot3.png)
+![cardshop](./client/public/img/worss3.png)
 
-![board1](./client/public/img/warlordboard1.png)
+![deckbuilder](./client/public/img/worss4.png)
 
-![board2](./client/public/img/warlordboard2.png)
+![board1](./client/public/img/worss5.png)
+
+![board2](./client/public/img/worss6.png)
 
 
   <a id="license"></a>
