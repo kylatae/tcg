@@ -1,12 +1,10 @@
 # Warlords of Ravagea
 
-![Welcome To Warlords](./client/public/img/scapePic.jpg)
+![Dwarvespack](./client/public/img/wotcardpack2.png)
 
 ## Description
 
 
-
-![Dwarvespack](./client/public/img/wotcardpack2.png)
 
 ## Table of Contents
 
