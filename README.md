@@ -1,6 +1,6 @@
 # Warlords of Ravagea
 
-![Dwarvespack](./client/public/img)
+![Dwarvespack](./client/public/img/boosters/)
 
 ## Description
 
