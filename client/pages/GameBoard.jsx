@@ -98,9 +98,7 @@ export default function GameBoard(){
     if (directions.substr(0,1) == 1){
       for (let i = 0; i < 6; i++)
       {if (startCell-(i*6) < 0) break;
-        console.log(tempGameState[startCell-(i*6)].tileRow, "UL R First One", tempGameState[startCell].tileRow-i, "Second One")
-        console.log(tempGameState[startCell-(i*6)].tileCol, "UL C First One", tempGameState[startCell].tileCol-i, "Second One")
-        if (tempGameState[startCell-(i*6)].tileRow == tempGameState[startCell].tileRow-i && tempGameState[startCell-(i*6)].tileCol == tempGameState[startCell].tileCol-i )
+       if (tempGameState[startCell-(i*6)].tileRow == tempGameState[startCell].tileRow-i && tempGameState[startCell-(i*6)].tileCol == tempGameState[startCell].tileCol-i )
           {if (tempGameState[startCell-(i*6)].cardId == "empty")
           {
             tempGameState[startCell-(i*6)].playerControl = "Green"
@@ -111,9 +109,7 @@ export default function GameBoard(){
     if (directions.substr(1,1) == 1){
       for (let i = 0; i < 6; i++)
       { if (startCell-(i*5) < 0)break;
-        console.log(tempGameState[startCell-(i*5)].tileRow, "U R First One", tempGameState[startCell].tileRow-i, "Second One")
-        console.log(tempGameState[startCell-(i*5)].tileCol, "U C First One", tempGameState[startCell].tileCol, "Second One")
-        if (tempGameState[startCell-(i*5)].tileCol == tempGameState[startCell].tileCol && tempGameState[startCell-(i*5)].tileRow == tempGameState[startCell].tileRow-i)
+       if (tempGameState[startCell-(i*5)].tileCol == tempGameState[startCell].tileCol && tempGameState[startCell-(i*5)].tileRow == tempGameState[startCell].tileRow-i)
           {if (tempGameState[startCell-(i*5)].cardId == "empty")
             {
               tempGameState[startCell-(i*5)].playerControl = "Green"
@@ -124,9 +120,7 @@ export default function GameBoard(){
     if (directions.substr(2,1) == 1){
       for (let i = 0; i < 6; i++)
       { if (startCell-(i*4) < 0)break;
-        console.log(tempGameState[startCell-(i*4)].tileRow, "UR R First One", tempGameState[startCell].tileRow-i, "Second One")
-        console.log(tempGameState[startCell-(i*4)].tileCol, "UR C First One", tempGameState[startCell].tileCol+i, "Second One")
-        if (tempGameState[startCell-(i*4)].tileRow == tempGameState[startCell].tileRow-i && tempGameState[startCell-(i*4)].tileCol == tempGameState[startCell].tileCol+i )
+       if (tempGameState[startCell-(i*4)].tileRow == tempGameState[startCell].tileRow-i && tempGameState[startCell-(i*4)].tileCol == tempGameState[startCell].tileCol+i )
           {if (tempGameState[startCell-(i*4)].cardId == "empty")
             {
               tempGameState[startCell-(i*4)].playerControl = "Green"
@@ -137,9 +131,7 @@ export default function GameBoard(){
     if (directions.substr(3,1) == 1){
       for (let i = 0; i < 6; i++)
       { if (startCell-(i*1) < 0)break;
-        console.log(tempGameState[startCell-(i*1)].tileRow, "L R First One", tempGameState[startCell].tileRow, "Second One")
-        console.log(tempGameState[startCell-(i*1)].tileCol, "L C First One", tempGameState[startCell].tileCol-i, "Second One")
-        if (tempGameState[startCell-(i*1)].tileRow == tempGameState[startCell].tileRow && tempGameState[startCell-(i*1)].tileCol == tempGameState[startCell].tileCol-i)
+       if (tempGameState[startCell-(i*1)].tileRow == tempGameState[startCell].tileRow && tempGameState[startCell-(i*1)].tileCol == tempGameState[startCell].tileCol-i)
           {if (tempGameState[startCell-(i*1)].cardId == "empty")
             {
               tempGameState[startCell-(i*1)].playerControl = "Green"
@@ -150,9 +142,7 @@ export default function GameBoard(){
     if (directions.substr(4,1) == 1){
       for (let i = 0; i < 6; i++)
       { if (startCell+(i*1) > 24)break;
-        console.log(tempGameState[startCell+(i*1)].tileRow, "R R First One", tempGameState[startCell].tileRow, "Second One")
-        console.log(tempGameState[startCell+(i*1)].tileCol, "R C First One", tempGameState[startCell].tileCol+i, "Second One")
-        if (tempGameState[startCell+(i*1)].tileRow == tempGameState[startCell].tileRow && tempGameState[startCell+(i*1)].tileCol == tempGameState[startCell].tileCol+i)
+       if (tempGameState[startCell+(i*1)].tileRow == tempGameState[startCell].tileRow && tempGameState[startCell+(i*1)].tileCol == tempGameState[startCell].tileCol+i)
           {if (tempGameState[startCell+(i*1)].cardId == "empty")
           {
             tempGameState[startCell+(i*1)].playerControl = "Green"
@@ -163,9 +153,7 @@ export default function GameBoard(){
     if (directions.substr(5,1) == 1){
       for (let i = 0; i < 6; i++)
       { if (startCell+(i*4) > 24)break;
-        console.log(tempGameState[startCell+(i*4)].tileRow, "DL R First One", tempGameState[startCell].tileRow+i, "Second One")
-        console.log(tempGameState[startCell+(i*4)].tileCol, "DL C First One", tempGameState[startCell].tileCol-i, "Second One")
-        if (tempGameState[startCell+(i*4)].tileRow == tempGameState[startCell].tileRow+i && tempGameState[startCell+(i*4)].tileCol == tempGameState[startCell].tileCol-i)
+       if (tempGameState[startCell+(i*4)].tileRow == tempGameState[startCell].tileRow+i && tempGameState[startCell+(i*4)].tileCol == tempGameState[startCell].tileCol-i)
           {if (tempGameState[startCell+(i*4)].cardId == "empty")
             {
               tempGameState[startCell+(i*4)].playerControl = "Green"
@@ -176,9 +164,7 @@ export default function GameBoard(){
     if (directions.substr(6,1) == 1){
       for (let i = 0; i < 6; i++)
       {if (startCell+(i*5) > 24)break;
-        console.log(tempGameState[startCell+(i*5)].tileRow, "DL R First One", tempGameState[startCell].tileRow+i, "Second One")
-        console.log(tempGameState[startCell+(i*5)].tileCol, "DL C First One", tempGameState[startCell].tileCol, "Second One")
-        if (tempGameState[startCell+(i*5)].tileRow == tempGameState[startCell].tileRow+i && tempGameState[startCell+(i*5)].tileCol == tempGameState[startCell].tileCol)
+       if (tempGameState[startCell+(i*5)].tileRow == tempGameState[startCell].tileRow+i && tempGameState[startCell+(i*5)].tileCol == tempGameState[startCell].tileCol)
           {if (tempGameState[startCell+(i*5)].cardId == "empty")
             {
               tempGameState[startCell+(i*5)].playerControl = "Green"
