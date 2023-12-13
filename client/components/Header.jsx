@@ -16,7 +16,7 @@ export default function Header() {
     <Navbar className="bg-body-tertiary navBarHeader" >
       <Container className="justify-content-between">
         <Nav.Link  href="/rules">Rules Page</Nav.Link>
-        <Navbar.Brand href="/">Warlords of Traetoria</Navbar.Brand>
+        <Navbar.Brand href="/">Warlords of Ravagea</Navbar.Brand>
 
           <Nav className="me-center">
 
