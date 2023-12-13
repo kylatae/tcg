@@ -4,7 +4,7 @@
 
 ## Description
 
-
+Warlords of Ravagea is a tactical grid based card game inspired by Magic the Gathering and Triple Triad: Originally a Mini Game within Final Fantasy VIII.
 
 ## Table of Contents
 
