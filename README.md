@@ -1,6 +1,6 @@
 # Warlords of Ravagea
 
-![Dwarvespack](./client/public/img/wotcardpack2.png)
+![Dwarvespack](./client/public/img/dwarfpackart.png)
 
 ## Description
 
