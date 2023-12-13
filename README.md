@@ -1,9 +1,12 @@
 # Warlords of Ravagea
 
-![Dwarvespack](./client/public/img/wotcardpack2.png)
+![Dwarvespack](./client/public/img/dwarfpackart.png)
 
 ## Description
 
+Warlords of Ravagea is a tactical grid based card game inspired by Magic the Gathering and Triple Triad: Originally a Mini Game within Final Fantasy VIII.
+
+This game was created as a group project in an edX Full Stack Development Bootcamp. It showcases a variety of technology such as React, JavaScript, Mongoose and Bootstrap. It also showcases a fair amount of case specific items such as Drag and Drop done with only useState, Context data, session storage, password encryption and stripping, and interaction for users to create a deck of cards, get some booster packs, and adjust as they see fit. This project was done in a 1 week time crunch from concept to creation and showcases the desire to think outside the box while pushing further down coding rabbit hole.
 
 
 ## Table of Contents
@@ -20,13 +23,25 @@
   <a id="links"></a>
 
 ## Links
-The deployed website can be accessed [here](https://warlordsoftraetoria-a6c327028c9d.herokuapp.com/)
+The deployed website can be accessed [here](https://warlordsofravegea-c36fa2705fc4.herokuapp.com/)
 
 The associated GitHub repo can be accessed [here](https://github.com/kylatae/tcg)
+
+
+
+
 
   <a id="technicalrequirements"></a>
 
 ## Tech Stack
+    -React/ Vite
+    -React Bootstrap
+    -Mongoose
+    -MongoDB
+    -Heroku
+    -GitHub
+    -Node
+    -Express
 
 
 
@@ -51,15 +66,17 @@ This site was created by:
 
 ## Site Preview
 
-![viewcards](./client/public/img/warlordsscreenshot1.png)
+![homescreen](./client/public/img/worss1.png)
 
-![cardshop](./client/public/img/warlordsscreenshot2.png)
+![viewcards](./client/public/img/worss2.png)
 
-![deckbuilder](./client/public/img/warlordsscreenshot3.png)
+![cardshop](./client/public/img/worss3.png)
 
-![board1](./client/public/img/warlordboard1.png)
+![deckbuilder](./client/public/img/worss4.png)
 
-![board2](./client/public/img/warlordboard2.png)
+![board1](./client/public/img/worss5.png)
+
+![board2](./client/public/img/worss6.png)
 
 
   <a id="license"></a>
