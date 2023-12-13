@@ -56,6 +56,7 @@
   position: absolute;
   height: 150px;
   width: 150px;
+  top:0; 
 }
 
 .cardHand:hover {
@@ -71,4 +72,12 @@
   width:150px;
   left: 0px;
   top: 0px;
+}
+
+.deckText{
+  position:absolute;
+  left: 210px;
+  top: 50px;
+  font-size: 30px;
+  text-shadow: 2px 2px 25px  #000, -2px -2px 25px  #000, 2px -2px 25px  #000, -2px 2px 25px  #000;
 }

@@ -52,28 +52,139 @@ export default function GameBoard(){
     setMovingCard(tempMovingCard[0])
   }
 
-
+//Functionality for dropping a card onto the board
   const dropCard = (e) => {
-    console.log ("Tried to drop")
-    if (!gameState[dragHover]?.occupied){
+    if (dragHover.src.substr(-9,9) === "empty.png"){
+      //Grabs game state and edits who owns the spot
       var tempGameState = gameState
-      tempGameState[dragHover].occupied = true
-      tempGameState[dragHover].playerControl = "Green"
-      tempGameState[dragHover].cardId = movingCard.cardId
-      console.log(tempGameState)
+      tempGameState[dragHover.id].occupied = true
+      tempGameState[dragHover.id].playerControl = "Green"
+      tempGameState[dragHover.id].cardId = movingCard.cardId
+      //Submits edits
       setGameState(tempGameState)
+      //Grabs Player state and removes the card from hand
       var tempPlayerState = playerGreen
+      const attackDirections = tempPlayerState.hand.find((id) => id.cardId == movingCard.cardId).direction
+      boardAttack(attackDirections)
       tempPlayerState.hand.splice(tempPlayerState.hand.findIndex(id => id.cardId == movingCard.cardId), 1)
+      //Submits edit
       setPlayerGreen(tempPlayerState)
+      //Clears draghover
       setDragHover(null)
-      console.log(playerGreen)
+
+      drawCard()
 
     }
 
   }
 
   const dragEnter = (e) => {
-    setDragHover(e.target.id)
+    setDragHover(e.target)
+  }
+
+  const drawCard = () => {
+    var tempPlayer = playerGreen
+    
+    if (playerGreen.cardDeck.length > 0){
+      var randomDraw = Math.floor(Math.random() * (tempPlayer.cardDeck.length - 0 + 1) + 0)
+      tempPlayer.hand = [...tempPlayer.hand, tempPlayer.cardDeck[randomDraw]]
+      tempPlayer.cardDeck.splice(randomDraw, 1)
+    }
+  }
+
+  const boardAttack = (directions) => {
+    var startCell = Number(dragHover.id)
+    var tempGameState = gameState
+    if (directions.substr(0,1) == 1){
+      for (let i = 0; i < 5; i++)
+      { if (startCell-6-(i*6) < 0)break;
+        if (tempGameState[startCell-(i*6)].tileRow > 1 && tempGameState[startCell-(i*6)].tileCol > 1)
+        {if (tempGameState[startCell-6-(i*6)].cardId == "empty")
+          {
+            tempGameState[startCell-6-(i*6)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    if (directions.substr(1,1) == 1){
+      for (let i = 0; i < 5; i++)
+      { if (startCell-5-(i*5) < 0)break;
+        if (tempGameState[startCell-(i*5)].tileCol > 1)
+        {if (tempGameState[startCell-5-(i*5)].cardId == "empty")
+          {
+            tempGameState[startCell-5-(i*5)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    if (directions.substr(2,1) == 1){
+      for (let i = 0; i < 5; i++)
+      { if (startCell-4-(i*4) < 0)break;
+        if (tempGameState[startCell-(i*4)].tileRow > 1 && tempGameState[startCell-(i*4)].tileCol < 5)
+        {if (tempGameState[startCell-4-(i*4)].cardId == "empty")
+          {
+            tempGameState[startCell-4-(i*4)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    if (directions.substr(3,1) == 1){
+      for (let i = 0; i < 5; i++)
+      { if (startCell-1-(i*1) < 0)break;
+        if (tempGameState[startCell-(i*1)].tileCol > 1)
+        {if (tempGameState[startCell-1-(i*1)].cardId == "empty")
+          {
+            tempGameState[startCell-1-(i*1)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    if (directions.substr(4,1) == 1){
+      for (let i = 0; i < 5; i++)
+      { if (startCell+1+(i*1) > 24)break;
+        if (tempGameState[startCell+(i*1)].tileCol < 6)
+          {if (tempGameState[startCell+1+(i*1)].cardId == "empty")
+          {
+            tempGameState[startCell+1+(i*1)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    if (directions.substr(5,1) == 1){
+      for (let i = 0; i < 5; i++)
+      { if (startCell+4+(i*4) > 24)break;
+        if (tempGameState[startCell+(i*4)].tileRow < 6 && tempGameState[startCell+(i*4)].tileCol < 6)
+        {if (tempGameState[startCell+4+(i*4)].cardId == "empty")
+          {
+            tempGameState[startCell+4+(i*4)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    if (directions.substr(6,1) == 1){
+      for (let i = 0; i < 5; i++)
+      {if (startCell+5+(i*5) > 24)break;
+        if (tempGameState[startCell+(i*5)].tileCol < 6)
+        {if (tempGameState[startCell+5+(i*5)].cardId == "empty")
+          {
+            tempGameState[startCell+5+(i*5)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    if (directions.substr(7,1) == 1){
+      for (let i = 0; i < 5; i++)
+      { if (startCell+6+(i*6) > 24)break;
+        if (tempGameState[startCell+(i*6)].tileRow < 6 && tempGameState[startCell+(i*6)].tileCol < 6)
+        {if (tempGameState[startCell+6+(i*6)].cardId == "empty")
+          {
+            tempGameState[startCell+6+(i*6)].playerControl = "Green"
+          }
+        }else break
+      }
+    }
+    setGameState(tempGameState)
+
   }
 
   const newPlayerGreen= async ()=>{
@@ -184,12 +295,24 @@ if (playerGreen?.ready !== true) return <>Loading...</>
         <tbody>
           <tr className="rowHand" >
             <td className="colHand" style={{left:(150)+"px"}}>
+            {playerGreen.spells.map((card, i) =>(
+            <img
+                  id={card.cardId}
+                  key={card.cardId}
+                  className="cardHand" 
+                  src={`./img/card/${card.cardId}.png`} 
+                  style={{
+                    left:((i*40))+"px",
+                  }}
+                  
+                />
+                ))}
             </td>
             <td className="colHand" style={{left:(550)+"px"}}>
               {playerGreen.hand.map((card, i) =>(
                 <img
-                  id={card.cardId}
-                  key={card.cardId}
+                  id={card?.cardId}
+                  key={card?.cardId}
                   className="cardHand" 
                   src={`./img/card/${card.cardId}.png`} 
                   style={{
@@ -200,11 +323,30 @@ if (playerGreen?.ready !== true) return <>Loading...</>
                   onDragEnter={(e)=>{dragEnter(e)}}
                   draggable
                 />
-
-                  
               ))}
             </td>
             <td className="colHand" style={{left:(950)+"px"}}>
+              <img
+                  id={playerGreen.summoner.cardId}
+                  key={playerGreen.summoner.cardId}
+                  className="cardHand" 
+                  src={`./img/card/${playerGreen.summoner.cardId}.png`} 
+                  style={{
+                    left:((0))+"px",
+                  }}
+                    
+                />
+              <img
+                id={"deck"}
+                key={"deck"}
+                className="cardHand" 
+                src={`./img/card/cardback.png`} 
+                style={{
+                  left:((200))+"px",
+                }}
+                
+              />
+              <p className="deckText">{playerGreen.cardDeck.length} Cards</p>
             </td>
           </tr>
         </tbody>
