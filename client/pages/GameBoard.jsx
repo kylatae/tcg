@@ -64,9 +64,9 @@ export default function GameBoard(){
       setGameState(tempGameState)
       //Grabs Player state and removes the card from hand
       var tempPlayerState = playerGreen
-      const attackDirections = tempPlayerState.hand.find((id) => id.cardId == movingCard.cardId).direction
+      const attackDirections = tempPlayerState.hand.find((id) => id?.cardId == movingCard.cardId).direction
       boardAttack(attackDirections)
-      tempPlayerState.hand.splice(tempPlayerState.hand.findIndex(id => id.cardId == movingCard.cardId), 1)
+      tempPlayerState.hand.splice(tempPlayerState.hand.findIndex(id => id?.cardId == movingCard.cardId), 1)
       //Submits edit
       setPlayerGreen(tempPlayerState)
       //Clears draghover
@@ -92,95 +92,109 @@ export default function GameBoard(){
     }
   }
 
-  const boardAttack = (directions) => {
+  const boardAttack = async (directions) => {
     var startCell = Number(dragHover.id)
     var tempGameState = gameState
     if (directions.substr(0,1) == 1){
-      for (let i = 0; i < 5; i++)
-      { if (startCell-6-(i*6) < 0)break;
-        if (tempGameState[startCell-(i*6)].tileRow > 1 && tempGameState[startCell-(i*6)].tileCol > 1)
-        {if (tempGameState[startCell-6-(i*6)].cardId == "empty")
+      for (let i = 0; i < 6; i++)
+      {if (startCell-(i*6) < 0) break;
+        console.log(tempGameState[startCell-(i*6)].tileRow, "UL R First One", tempGameState[startCell].tileRow-i, "Second One")
+        console.log(tempGameState[startCell-(i*6)].tileCol, "UL C First One", tempGameState[startCell].tileCol-i, "Second One")
+        if (tempGameState[startCell-(i*6)].tileRow == tempGameState[startCell].tileRow-i && tempGameState[startCell-(i*6)].tileCol == tempGameState[startCell].tileCol-i )
+          {if (tempGameState[startCell-(i*6)].cardId == "empty")
           {
-            tempGameState[startCell-6-(i*6)].playerControl = "Green"
+            tempGameState[startCell-(i*6)].playerControl = "Green"
           }
         }else break
       }
     }
     if (directions.substr(1,1) == 1){
-      for (let i = 0; i < 5; i++)
-      { if (startCell-5-(i*5) < 0)break;
-        if (tempGameState[startCell-(i*5)].tileCol > 1)
-        {if (tempGameState[startCell-5-(i*5)].cardId == "empty")
-          {
-            tempGameState[startCell-5-(i*5)].playerControl = "Green"
-          }
-        }else break
+      for (let i = 0; i < 6; i++)
+      { if (startCell-(i*5) < 0)break;
+        console.log(tempGameState[startCell-(i*5)].tileRow, "U R First One", tempGameState[startCell].tileRow-i, "Second One")
+        console.log(tempGameState[startCell-(i*5)].tileCol, "U C First One", tempGameState[startCell].tileCol, "Second One")
+        if (tempGameState[startCell-(i*5)].tileCol == tempGameState[startCell].tileCol && tempGameState[startCell-(i*5)].tileRow == tempGameState[startCell].tileRow-i)
+          {if (tempGameState[startCell-(i*5)].cardId == "empty")
+            {
+              tempGameState[startCell-(i*5)].playerControl = "Green"
+            }
+          }else break
       }
     }
     if (directions.substr(2,1) == 1){
-      for (let i = 0; i < 5; i++)
-      { if (startCell-4-(i*4) < 0)break;
-        if (tempGameState[startCell-(i*4)].tileRow > 1 && tempGameState[startCell-(i*4)].tileCol < 5)
-        {if (tempGameState[startCell-4-(i*4)].cardId == "empty")
-          {
-            tempGameState[startCell-4-(i*4)].playerControl = "Green"
-          }
-        }else break
+      for (let i = 0; i < 6; i++)
+      { if (startCell-(i*4) < 0)break;
+        console.log(tempGameState[startCell-(i*4)].tileRow, "UR R First One", tempGameState[startCell].tileRow-i, "Second One")
+        console.log(tempGameState[startCell-(i*4)].tileCol, "UR C First One", tempGameState[startCell].tileCol+i, "Second One")
+        if (tempGameState[startCell-(i*4)].tileRow == tempGameState[startCell].tileRow-i && tempGameState[startCell-(i*4)].tileCol == tempGameState[startCell].tileCol+i )
+          {if (tempGameState[startCell-(i*4)].cardId == "empty")
+            {
+              tempGameState[startCell-(i*4)].playerControl = "Green"
+            }
+          }else break
       }
     }
     if (directions.substr(3,1) == 1){
-      for (let i = 0; i < 5; i++)
-      { if (startCell-1-(i*1) < 0)break;
-        if (tempGameState[startCell-(i*1)].tileCol > 1)
-        {if (tempGameState[startCell-1-(i*1)].cardId == "empty")
-          {
-            tempGameState[startCell-1-(i*1)].playerControl = "Green"
-          }
-        }else break
+      for (let i = 0; i < 6; i++)
+      { if (startCell-(i*1) < 0)break;
+        console.log(tempGameState[startCell-(i*1)].tileRow, "L R First One", tempGameState[startCell].tileRow, "Second One")
+        console.log(tempGameState[startCell-(i*1)].tileCol, "L C First One", tempGameState[startCell].tileCol-i, "Second One")
+        if (tempGameState[startCell-(i*1)].tileRow == tempGameState[startCell].tileRow && tempGameState[startCell-(i*1)].tileCol == tempGameState[startCell].tileCol-i)
+          {if (tempGameState[startCell-(i*1)].cardId == "empty")
+            {
+              tempGameState[startCell-(i*1)].playerControl = "Green"
+            }
+          }else break
       }
     }
     if (directions.substr(4,1) == 1){
-      for (let i = 0; i < 5; i++)
-      { if (startCell+1+(i*1) > 24)break;
-        if (tempGameState[startCell+(i*1)].tileCol < 6)
-          {if (tempGameState[startCell+1+(i*1)].cardId == "empty")
+      for (let i = 0; i < 6; i++)
+      { if (startCell+(i*1) > 24)break;
+        console.log(tempGameState[startCell+(i*1)].tileRow, "R R First One", tempGameState[startCell].tileRow, "Second One")
+        console.log(tempGameState[startCell+(i*1)].tileCol, "R C First One", tempGameState[startCell].tileCol+i, "Second One")
+        if (tempGameState[startCell+(i*1)].tileRow == tempGameState[startCell].tileRow && tempGameState[startCell+(i*1)].tileCol == tempGameState[startCell].tileCol+i)
+          {if (tempGameState[startCell+(i*1)].cardId == "empty")
           {
-            tempGameState[startCell+1+(i*1)].playerControl = "Green"
+            tempGameState[startCell+(i*1)].playerControl = "Green"
           }
-        }else break
+          }else break
       }
     }
     if (directions.substr(5,1) == 1){
-      for (let i = 0; i < 5; i++)
-      { if (startCell+4+(i*4) > 24)break;
-        if (tempGameState[startCell+(i*4)].tileRow < 6 && tempGameState[startCell+(i*4)].tileCol < 6)
-        {if (tempGameState[startCell+4+(i*4)].cardId == "empty")
-          {
-            tempGameState[startCell+4+(i*4)].playerControl = "Green"
-          }
-        }else break
+      for (let i = 0; i < 6; i++)
+      { if (startCell+(i*4) > 24)break;
+        console.log(tempGameState[startCell+(i*4)].tileRow, "DL R First One", tempGameState[startCell].tileRow+i, "Second One")
+        console.log(tempGameState[startCell+(i*4)].tileCol, "DL C First One", tempGameState[startCell].tileCol-i, "Second One")
+        if (tempGameState[startCell+(i*4)].tileRow == tempGameState[startCell].tileRow+i && tempGameState[startCell+(i*4)].tileCol == tempGameState[startCell].tileCol-i)
+          {if (tempGameState[startCell+(i*4)].cardId == "empty")
+            {
+              tempGameState[startCell+(i*4)].playerControl = "Green"
+            }
+          }else break
       }
     }
     if (directions.substr(6,1) == 1){
-      for (let i = 0; i < 5; i++)
-      {if (startCell+5+(i*5) > 24)break;
-        if (tempGameState[startCell+(i*5)].tileCol < 6)
-        {if (tempGameState[startCell+5+(i*5)].cardId == "empty")
-          {
-            tempGameState[startCell+5+(i*5)].playerControl = "Green"
-          }
-        }else break
-      }
+      for (let i = 0; i < 6; i++)
+      {if (startCell+(i*5) > 24)break;
+        console.log(tempGameState[startCell+(i*5)].tileRow, "DL R First One", tempGameState[startCell].tileRow+i, "Second One")
+        console.log(tempGameState[startCell+(i*5)].tileCol, "DL C First One", tempGameState[startCell].tileCol, "Second One")
+        if (tempGameState[startCell+(i*5)].tileRow == tempGameState[startCell].tileRow+i && tempGameState[startCell+(i*5)].tileCol == tempGameState[startCell].tileCol)
+          {if (tempGameState[startCell+(i*5)].cardId == "empty")
+            {
+              tempGameState[startCell+(i*5)].playerControl = "Green"
+            }
+          }else break
+        }
     }
     if (directions.substr(7,1) == 1){
-      for (let i = 0; i < 5; i++)
-      { if (startCell+6+(i*6) > 24)break;
-        if (tempGameState[startCell+(i*6)].tileRow < 6 && tempGameState[startCell+(i*6)].tileCol < 6)
-        {if (tempGameState[startCell+6+(i*6)].cardId == "empty")
-          {
-            tempGameState[startCell+6+(i*6)].playerControl = "Green"
-          }
-        }else break
+      for (let i = 0; i < 6; i++)
+      { if (startCell+(i*6) > 24)break;
+        if (tempGameState[startCell+(i*6)].tileRow == tempGameState[startCell].tileRow+i && tempGameState[startCell+(i*6)].tileCol == tempGameState[startCell].tileCol+i)
+          {if (tempGameState[startCell+(i*6)].cardId == "empty")
+            {
+              tempGameState[startCell+(i*6)].playerControl = "Green"
+            }
+          }else break
       }
     }
     setGameState(tempGameState)
@@ -300,9 +314,9 @@ if (playerGreen?.ready !== true) return <>Loading...</>
                   id={card.cardId}
                   key={card.cardId}
                   className="cardHand" 
-                  src={`./img/card/${card.cardId}.png`} 
+                  src={`./img/card/${card?.cardId}.png`} 
                   style={{
-                    left:((i*40))+"px",
+                    left:((i*50))+"px",
                   }}
                   
                 />
@@ -314,7 +328,7 @@ if (playerGreen?.ready !== true) return <>Loading...</>
                   id={card?.cardId}
                   key={card?.cardId}
                   className="cardHand" 
-                  src={`./img/card/${card.cardId}.png`} 
+                  src={`./img/card/${card?.cardId}.png`} 
                   style={{
                     left:((i*40))+"px",
                   }}
@@ -327,10 +341,10 @@ if (playerGreen?.ready !== true) return <>Loading...</>
             </td>
             <td className="colHand" style={{left:(950)+"px"}}>
               <img
-                  id={playerGreen.summoner.cardId}
-                  key={playerGreen.summoner.cardId}
+                  id={playerGreen?.summoner?.cardId}
+                  key={playerGreen?.summoner?.cardId}
                   className="cardHand" 
-                  src={`./img/card/${playerGreen.summoner.cardId}.png`} 
+                  src={`./img/card/${playerGreen?.summoner?.cardId}.png`} 
                   style={{
                     left:((0))+"px",
                   }}
