@@ -24,7 +24,7 @@ const summonData = [
   {cardId: '00018', name: 'Heala Blockins', tribe: 'Human', level: '1', attack: '4', defense: '1', abiltyId: '00000', ability: 'None', direction: '00011100'},
   {cardId: '00019', name: 'Palan Decker', tribe: 'Human', level: '1', attack: '2', defense: '3', abiltyId: '00000', ability: 'None', direction: '01000011'},
   {cardId: '00020', name: 'Samwise Colins', tribe: 'Human', level: '1', attack: '3', defense: '2', abiltyId: '00000', ability: 'None', direction: '10101000'},
-  {cardId: '00021', name: 'Tarl Stoenroc', tribe: 'Dwarf', level: '1', attack: '2', defense: '3', abiltyId: '00000', ability: 'None', direction: '01010010'},
+  {cardId: '00021', name: 'Tarl Stoenroc', tribe: 'Dwarf', level: '1', attack: '2', defense: '3', abiltyId: '00000', ability: 'None', direction: '10010010'},
   {cardId: '00022', name: 'Gust Boarjaw', tribe: 'Dwarf', level: '1', attack: '3', defense: '2', abiltyId: '00000', ability: 'None', direction: '10001100'},
   {cardId: '00023', name: 'Edgin Mienhorn', tribe: 'Dwarf', level: '1', attack: '2', defense: '3', abiltyId: '00000', ability: 'None', direction: '00010011'},
   {cardId: '00024', name: 'Gimle Mudslide', tribe: 'Dwarf', level: '1', attack: '3', defense: '2', abiltyId: '00000', ability: 'None', direction: '01100100'},
