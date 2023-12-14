@@ -81,7 +81,7 @@ export default function DeckBuilder(){
         setSelectedTotal(spellChanges.length)
         break;
       case "Trap":
-        const dupTrap = spellSelect.find(({cardId}) => cardId === `${e.target.value}`)
+        const dupTrap = trapSelect.find(({cardId}) => cardId === `${e.target.value}`)
         var trapChanges = trapSelect
         if (dupTrap !== undefined){
           const removeTrap = trapChanges.findIndex(x => x.cardId === e.target.value)
@@ -93,7 +93,7 @@ export default function DeckBuilder(){
         setSelectedTotal(trapChanges.length)
         break;
       case "Summon":
-        const dupSummon = spellSelect.find(({cardId}) => cardId === `${e.target.value}`)
+        const dupSummon = summonSelect.find(({cardId}) => cardId === `${e.target.value}`)
         var summonChanges = summonSelect
         if (dupSummon !== undefined){
           const removeSummon = summonChanges.findIndex(x => x.cardId === e.target.value)
@@ -120,7 +120,7 @@ export default function DeckBuilder(){
         break;
       case "Spell":
         tempInfo = spellSelect
-        if (tempInfo.length < 5){
+        if (tempInfo.length != 5){
            alert("Please select exactly 5 spells")
            return;
         }
@@ -130,7 +130,7 @@ export default function DeckBuilder(){
         break;
       case "Summon":
         tempInfo = summonSelect
-        if (trapSelect.length+tempInfo.length < 25){
+        if (trapSelect.length+tempInfo.length != 25){
           alert(`You selected ${trapSelect.length} traps, so you need to select ${25 - trapSelect.length} summon cards`)
           return;
           }
