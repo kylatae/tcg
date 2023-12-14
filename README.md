@@ -23,7 +23,7 @@ This game was created as a group project in an edX Full Stack Development Bootca
   <a id="links"></a>
 
 ## Links
-The deployed website can be accessed [here](https://warlordsoftraetoria-a6c327028c9d.herokuapp.com/)
+The deployed website can be accessed [here](https://warlordsofravegea-c36fa2705fc4.herokuapp.com/)
 
 The associated GitHub repo can be accessed [here](https://github.com/kylatae/tcg)
 
