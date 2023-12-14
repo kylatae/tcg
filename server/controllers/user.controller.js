@@ -154,28 +154,24 @@ async function updateDeck(data) {
           {"_id": data._id,}, 
           {$set: {"savedDeck.summoner": data.cards} }, 
           {new: true, upsert:true})
-          console.log (addACard.savedDeck)
         break;
       case "Spell":
         addACard = await User.findOneAndUpdate(
           {"_id": data._id,}, 
           {$set: {"savedDeck.spell": data.cards} }, 
           {new: true, upsert:true})
-          console.log (addACard.savedDeck)
         break;
       case "Trap":
         addACard = await User.findOneAndUpdate(
           {"_id": data._id,}, 
           {$set: {"savedDeck.trap": data.cards} }, 
           {new: true, upsert:true})
-          console.log (addACard.savedDeck)
         break;
       case "Summon":
         addACard = await User.findOneAndUpdate(
           {"_id": data._id,}, 
           {$set: {"savedDeck.summon": data.cards} }, 
           {new: true, upsert:true})
-          console.log (addACard.savedDeck)
         break;
                           
     }
