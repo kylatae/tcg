@@ -17,6 +17,7 @@ export default function GameBoard(){
   const [gamePhase, setGamePhase] = useState("fresh")
   const [movingCard, setMovingCard] = useState({})
   const [dragHover, setDragHover] = useState({})
+  const drawCardE = document.querySelector('.drawCard')
 
   var cellDraw = 0;
 
@@ -50,6 +51,7 @@ export default function GameBoard(){
   const grabCard = (e) => {
     var tempMovingCard = playerGreen.hand.filter(x => x.cardId == e.target.id)
     setMovingCard(tempMovingCard[0])
+    drawCardE.classList.remove('redrawCard')
   }
 
 //Functionality for dropping a card onto the board
@@ -84,11 +86,15 @@ export default function GameBoard(){
 
   const drawCard = () => {
     var tempPlayer = playerGreen
+    drawCardE.style.setProperty('--animation', 'paused')
+
     
     if (playerGreen.cardDeck.length > 0){
       var randomDraw = Math.floor(Math.random() * (tempPlayer.cardDeck.length - 0 + 1) + 0)
       tempPlayer.hand = [...tempPlayer.hand, tempPlayer.cardDeck[randomDraw]]
       tempPlayer.cardDeck.splice(randomDraw, 1)
+      drawCardE.style.setProperty('--animation', 'running')
+      drawCardE.classList.add('redrawCard')
     }
   }
 
@@ -313,10 +319,11 @@ if (playerGreen?.ready !== true) return <>Loading...</>
                 <img
                   id={card?.cardId}
                   key={card?.cardId}
-                  className="cardHand" 
+                  className="cardHand drawnCard" 
                   src={`./img/card/${card?.cardId}.png`} 
                   style={{
                     left:((i*40))+"px",
+                    // animation: 
                   }}
                   onDragStart={(e)=>{grabCard(e)}}
                   onDragEnd={(e)=>{dropCard(e)}}
@@ -340,6 +347,16 @@ if (playerGreen?.ready !== true) return <>Loading...</>
                 id={"deck"}
                 key={"deck"}
                 className="cardHand" 
+                src={`./img/card/cardback.png`} 
+                style={{
+                  left:((200))+"px",
+                }}
+                
+              />
+              <img
+                id={"drawCard"}
+                key={"drawCard"}
+                className="cardHand drawCard redrawCard" 
                 src={`./img/card/cardback.png`} 
                 style={{
                   left:((200))+"px",
